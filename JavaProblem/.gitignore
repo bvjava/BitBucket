@@ -5,10 +5,7 @@ target/
 .idea/
 *.iml
 
-# Eclipse
-.classpath
-.project
-.settings/
 
 # Mac OS X
 .DS_Store
+/bin/
