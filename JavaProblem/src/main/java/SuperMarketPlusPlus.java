@@ -16,12 +16,13 @@ public class SuperMarketPlusPlus {
         System.out.println("Starting Supermarket Plus Plus");
 		
         items = new ArrayList<Item>();
-        items.add(new Item("Thermal Vest", 10, 20));
-        items.add(new Item("Aged Brie", 2, 0));
-        items.add(new Item("Chicken", 5, 7));
-        items.add(new Item("Sulfuras", 0, 80));
-        items.add(new Item("Backstage Passes", 15, 20));
-        items.add(new Item("Ginger Cake", 3, 6));
+        items.add(new Item(SuperMarketConstants.THERMAL_VEST, 10, 20));
+        items.add(new Item(SuperMarketConstants.AGED_BRIE, 2, 0));
+        items.add(new Item(SuperMarketConstants.CHICKEN, 5, 7));
+        items.add(new Item(SuperMarketConstants.SULFURAS, 0, 80));
+        items.add(new Item(SuperMarketConstants.BACKSTAGE_PASSES, 15, 20));
+        items.add(new Item(SuperMarketConstants.GINGER_CAKE, 3, 6));
+        items.add(new Item(SuperMarketConstants.ORGANIC_BANANA, 6, 16)); // Addition of new item ORGANIC_BANANA to the existing system.
 
         updateQuality();
 }
@@ -32,11 +33,12 @@ public class SuperMarketPlusPlus {
     {
         for (int i = 0; i < items.size(); i++)
         {
-            if ((!"Aged Brie".equals(items.get(i).getName())) && !"Backstage Passes".equals(items.get(i).getName())) 
+        	
+			if ((!SuperMarketConstants.AGED_BRIE.equals(items.get(i).getName())) && !SuperMarketConstants.BACKSTAGE_PASSES.equals(items.get(i).getName())) 
             {
                 if (items.get(i).getQuality() > 0)
                 {
-                    if (!"Sulfuras".equals(items.get(i).getName()))
+                    if (!SuperMarketConstants.SULFURAS.equals(items.get(i).getName()))
                     {
                         items.get(i).setQuality(items.get(i).getQuality() - 1);
                     }
@@ -48,7 +50,7 @@ public class SuperMarketPlusPlus {
                 {
                     items.get(i).setQuality(items.get(i).getQuality() + 1);
 
-                    if ("Backstage Passes".equals(items.get(i).getName()))
+                    if (SuperMarketConstants.BACKSTAGE_PASSES.equals(items.get(i).getName()))
                     {
                         if (items.get(i).getSellIn() < 11)
                         {
@@ -69,20 +71,20 @@ public class SuperMarketPlusPlus {
                 }
             }
 
-            if (!"Sulfuras".equals(items.get(i).getName()))
+            if (!SuperMarketConstants.SULFURAS.equals(items.get(i).getName()))
             {
                 items.get(i).setSellIn(items.get(i).getSellIn() - 1);
             }
 
             if (items.get(i).getSellIn() < 0)
             {
-                if (!"Aged Brie".equals(items.get(i).getName()))
+                if (!SuperMarketConstants.AGED_BRIE.equals(items.get(i).getName()))
                 {
-                    if (!"Backstage Passes".equals(items.get(i).getName()))
+                    if (!SuperMarketConstants.BACKSTAGE_PASSES.equals(items.get(i).getName()))
                     {
                         if (items.get(i).getQuality() > 0)
                         {
-                            if (!"Sulfuras".equals(items.get(i).getName()))
+                            if (!SuperMarketConstants.SULFURAS.equals(items.get(i).getName()))
                             {
                                 items.get(i).setQuality(items.get(i).getQuality() - 1);
                             }
