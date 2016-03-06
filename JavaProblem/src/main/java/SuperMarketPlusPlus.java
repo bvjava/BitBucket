@@ -75,7 +75,7 @@ public class SuperMarketPlusPlus {
                     {
                         if (items.get(i).getSellIn() < 11)
                         {
-                            if (items.get(i).getQuality() < 50)
+                            if (items.get(i).getQuality() < 49)
                             {
                                 items.get(i).setQuality(items.get(i).getQuality() + 2); //Correction. Previously increased by 1.
                             }
@@ -83,7 +83,7 @@ public class SuperMarketPlusPlus {
 
                         if (items.get(i).getSellIn() < 6)
                         {
-                            if (items.get(i).getQuality() < 50)
+                            if (items.get(i).getQuality() < 47)
                             {
                                 items.get(i).setQuality(items.get(i).getQuality() + 3); //Correction. Previously increased by 1.
                             }
@@ -111,7 +111,14 @@ public class SuperMarketPlusPlus {
                             	 * Once the sell by date has passed, Quality degrades twice as fast (i.e. the int is decremented by 2 instead of 1)
                             	 * 
                             	 */
-                                items.get(i).setQuality(items.get(i).getQuality() - 2); // Correction. Previously done by 1.
+                            	// Requirement quality can not be negative.
+                        		if(items.get(i).getQuality() > 1){
+                        			items.get(i).setQuality(items.get(i).getQuality() - 2); // Correction. Previously done by 1.
+                        		}      
+                        		else{
+                        			items.get(i).setQuality(0);
+                        		}
+                                 
                             }
                         }
                     }
